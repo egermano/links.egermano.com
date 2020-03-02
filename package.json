@@ -1,0 +1,50 @@
+{
+	"name": "gatsby-bulma-quickstart",
+	"description": "A Project to bootstrap your next Gatsby + Bulma site.",
+	"version": "1.5.2",
+	"author": "Aman Mittal <amandeepmittal@live.com>",
+	"dependencies": {
+		"bulma": "^0.7.4",
+		"ftp-deploy": "^2.3.3",
+		"gatsby": "^2.3.25",
+		"gatsby-image": "^2.0.39",
+		"gatsby-plugin-google-analytics": "^2.0.18",
+		"gatsby-plugin-manifest": "^2.0.29",
+		"gatsby-plugin-offline": "^2.0.25",
+		"gatsby-plugin-react-helmet": "^3.0.12",
+		"gatsby-plugin-sass": "^2.0.11",
+		"gatsby-plugin-sharp": "^2.0.35",
+		"gatsby-plugin-sitemap": "^2.2.0",
+		"gatsby-source-filesystem": "^2.0.29",
+		"gatsby-transformer-sharp": "^2.1.18",
+		"node-sass": "^4.11.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"react-helmet": "^5.2.0",
+		"react-icons": "^3.6.1"
+	},
+	"keywords": [
+		"gatsby",
+		"bulma",
+		"starter",
+		"kit",
+		"template"
+	],
+	"license": "MIT",
+	"scripts": {
+		"deploy": "gatsby build && node deploy",
+		"start" : "gatsby develop",
+		"build": "gatsby build",
+		"develop": "gatsby develop",
+		"start": "npm run develop",
+		"format": "prettier --write \"src/**/*.js\"",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"prettier": "^1.14.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/amandeepmittal/gatsby-bulma-quickstart"
+	}
+}
