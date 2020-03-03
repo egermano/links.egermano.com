@@ -1,50 +1,38 @@
-import React from 'react';
-import { FaGithub } from 'react-icons/fa';
-import { FaRocket } from 'react-icons/fa';
-
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 import './style.scss';
 
-import gatsbyLogo from '../images/gatsby-icon.png';
-import bulmaLogo from '../images/bulma-logo.png';
 import Navbar from './navbar';
 
+const Image = () => {
+	const data = useStaticQuery(graphql`
+	  query {
+		placeholderImage: file(relativePath: { eq: "iot-bg.jpg" }) {
+		  childImageSharp {
+			fluid(maxWidth: 2440) {
+			  ...GatsbyImageSharpFluid
+			}
+		  }
+		}
+	  }
+	`)
+  
+	return <Img className="bg-image" fluid={data.placeholderImage.childImageSharp.fluid} />
+  }
+
 const Header = ({ siteTitle }) => (
-	<section className="hero gradientBg is-fullheight-with-navbar">
+	<section className="hero ">
 		<Navbar />
+		<Image />
 		<div className="hero-body">
 			<div className="container center">
 				<article className="media">
-					<figure className="is-left">
-						<span className="icon is-large ">
-							<img src={gatsbyLogo} alt="gatsby-logo" />
-						</span>
-					</figure>
-					<figure className="is-left">
-						<span className="icon is-large">
-							<img src={bulmaLogo} alt="bulma-logo" />
-						</span>
-					</figure>
 					<div className="media-content">
 						<div className="content">
-							<h1 className="is-uppercase is-size-1 has-text-gray">
-								<a className="has-text-white" href="https://www.gatsbyjs.org/">GatsbyJS</a>{' - '}
-								<a className="has-text-white" href="https://bulma.io/">Bulma CSS</a> Starter
+							<h1 className="is-uppercase is-size-1 has-text-white">
+								O BRUNO GERMANO
 							</h1>
-							<p className="subtitle has-text-white is-size-3 is-center">
-							
-								<a  className="button is-info is-inverted"
-									href="https://github.com/app-generator/gatsby-starter-bulma-css">
-									<span className="icon"><FaGithub size="fa-2x" /></span>
-									<span>Get Sources</span>
-								</a>
-                                {' '}
-								<a  className="button is-info is-inverted"
-									href="https://developers.google.com/speed/pagespeed/insights/?url=https://gatsby-starter-bulma-css.appseed.us">
-									<span className="icon"><FaRocket size="fa-2x" /></span>
-									<span>{' '}Check Speed</span>
-								</a>
-
-							</p>
 						</div>
 					</div>
 				</article>
