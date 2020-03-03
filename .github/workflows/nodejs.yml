@@ -36,7 +36,7 @@ jobs:
     - name: Install deploy dependencies
       run: sudo apt-get update && sudo apt-get install sshpass  -y 
     - name: Deploy
-      run:  /usr/bin/rsync -ratlz --rsh="/usr/bin/sshpass -p $EGERMANO_PASS ssh -o StrictHostKeyChecking=no -l egermano" public/  egermano@egermano:~/egermano.com/me
+      run:  /usr/bin/rsync -ratlz --rsh="/usr/bin/sshpass -p $EGERMANO_PASS ssh -o StrictHostKeyChecking=no -l egermano" public/  egermano@ssh.egermano.com:~/egermano.com/me
       if: github.ref == 'refs/heads/develop'
       env: 
         EGERMANO_PASS: ${{ secrets.egermano_pass }}
