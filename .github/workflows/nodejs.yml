@@ -26,6 +26,13 @@ jobs:
     - run: yarn test
       env:
         CI: true
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: build-snapshot 
+        # Directory containing files to upload
+        path: ./public
     - name: Install deploy dependencies
       run: sudo apt-get update && sudo apt-get install sshpass  -y 
     - name: Deploy
