@@ -1,11 +1,17 @@
-import React from 'react'
-import Layout from '../components/layout'
+import React from "react";
+import Layout from "../components/layout";
+import emoji from "../components/emoji";
 
 const NotFoundPage = () => (
   <Layout>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <section className="section has-text-centered">
+      <h2 className="title">404 Não Encontrado</h2>
+      <p>
+        Você tentou acessar uma página que não existe{" "}
+        <emoji emoji="😥">😥</emoji>
+      </p>
+    </section>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;
