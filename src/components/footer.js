@@ -2,7 +2,7 @@ import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { StaticQuery, graphql } from 'gatsby';
 import './style.scss';
-import Emoji from './emoji';
+// import Emoji from './emoji';
 
 const Footer = () => (
 	<StaticQuery
@@ -10,8 +10,6 @@ const Footer = () => (
 			query SocialQuery {
 				site {
 					siteMetadata {
-						gatsby
-						bulma
 						twitter
 						medium
 						github
@@ -33,9 +31,7 @@ const Footer = () => (
 					</article>
 					<br />
 					<p className="is-size-6">
-						Initialy coded by (@amahimself) using{' '}
-						<a href={data.site.siteMetadata.gatsby}>Gatsby</a> +{' '}
-						<a href={data.site.siteMetadata.bulma}>Bulma</a>
+						
 					</p>
 				</div>
 			</footer>
