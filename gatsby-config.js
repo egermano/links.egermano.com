@@ -43,9 +43,24 @@ module.exports = {
 				anonymize: true
 			}
 		},
-		`gatsby-plugin-sitemap`
+		`gatsby-plugin-sitemap`,
 		// this (optional) plugin enables Progressive Web App + Offline functionality
 		// To learn more, visit: https://gatsby.app/offline
 		// 'gatsby-plugin-offline',
+		{
+			resolve: 'gatsby-plugin-htaccess',
+			options: {
+			  RewriteBase: '/',
+			  https: true,
+			  www: false,
+			  SymLinksIfOwnerMatch: true,
+			  host: 'me.egermano.com',
+			  ErrorDocument: `
+				ErrorDocument 401 /error_pages/404.html
+				ErrorDocument 404 /error_pages/404.html
+				ErrorDocument 500 /error_pages/404.html
+			  `,
+			},
+		  }
 	]
 };
