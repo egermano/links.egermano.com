@@ -1,29 +1,45 @@
 // Importing variables
-@import './variables.scss';
+@import "./variables.scss";
 
 // Importing Bulma from node_modules
-@import '~bulma/bulma.sass';
+@import "~bulma/bulma.sass";
 
-.gradientBg {
-	display: flex;
-	background: linear-gradient(to right, $primary-color, $secondary-color);
+.hero { 
+	position: relative;
+	background-color: $black;
+	overflow: hidden;
+}
+
+.bg-image {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  position: absolute !important;
+  opacity: 0.75;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-20px);
+}
+
+.hero-body {
+	transform:  translateZ(10px);
 }
 
 .center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer {
-	display: flex;
-	padding: 1.5rem 1.5rem;
-	line-height: 1.5rem;
-	a {
-		border-bottom: 1px solid;
-		color: black;
-	}
-	a:hover {
-		color: $secondary-color;
-	}
+  display: flex;
+  padding: 1.5rem 1.5rem;
+  line-height: 1.5rem;
+  a {
+    border-bottom: 1px solid;
+    color: black;
+  }
+  a:hover {
+    color: $secondary-color;
+  }
 }
