@@ -10,3 +10,21 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: build-snapshot 
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - name: Install deploy dependencies
+      run: sudo apt-get update && sudo apt-get install sshpass  -y 
+    - name: Deploy
+      run:  /usr/bin/rsync -ratlz --rsh="/usr/bin/sshpass -p $EGERMANO_PASS ssh -o StrictHostKeyChecking=no -l egermano" public/  egermano@ssh.egermano.com:~/egermano.com/me
+      if: github.ref == 'refs/heads/develop'
+      env: 
+        EGERMANO_PASS: ${{ secrets.egermano_pass }}
