@@ -24,13 +24,13 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
-				name: 'Makefolio',
-				short_name: 'Makefolio',
+				name: 'Links - O Bruno Germano',
+				short_name: 'Links OBG',
 				start_url: '/',
-				background_color: '#2980b9',
-				theme_color: '#2980b9',
+				background_color: '#aaaaaa',
+				theme_color: '#333333',
 				display: 'standalone',
-				icon: 'src/images/gatsby-icon.png',
+				icon: 'src/images/bg-logo.png',
 				orientation: 'portrait'
 			}
 		},
