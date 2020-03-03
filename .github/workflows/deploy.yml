@@ -1,0 +1,12 @@
+name: Deploy to dreamhost
+
+on: [push]
+
+jobs:
+  deploy:
+    
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
