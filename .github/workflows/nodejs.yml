@@ -21,10 +21,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - name: Cache Yarn ./node_modules
+      uses: actions/cache@v1
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
     - run: yarn install
     - run: yarn run build --if-present
     - run: yarn test
@@ -37,6 +44,22 @@ jobs:
         name: build-snapshot 
         # Directory containing files to upload
         path: ./public
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    needs: build
+
+    steps:
+    - name: Upload artifact
+      uses: actions/download-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: build-snapshot 
     - name: Install deploy dependencies
       run: sudo apt-get update && sudo apt-get install sshpass  -y 
     - name: Deploy
