@@ -1,8 +1,10 @@
 {
-	"name": "gatsby-bulma-quickstart",
-	"description": "A Project to bootstrap your next Gatsby + Bulma site.",
-	"version": "1.5.2",
-	"author": "Aman Mittal <amandeepmittal@live.com>",
+	"name": "links.egermano.com",
+	"description": "A Project bootstrapped using Gatsby + Bulma.",
+	"version": "0.1.0",
+	"author": "Bruno Germano <bruno@egermano.com>",
+	"private": true,
+	"license": "UNLICENSED",
 	"dependencies": {
 		"bulma": "^0.7.4",
 		"ftp-deploy": "^2.3.3",
@@ -27,11 +29,9 @@
 	"keywords": [
 		"gatsby",
 		"bulma",
-		"starter",
-		"kit",
-		"template"
+		"react",
+		"graphql"
 	],
-	"license": "MIT",
 	"scripts": {
 		"deploy": "gatsby build && node deploy",
 		"start": "npm run develop",
@@ -45,6 +45,6 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/amandeepmittal/gatsby-bulma-quickstart"
+		"url": "https://github.com/egermano/links.egermano.com"
 	}
 }
