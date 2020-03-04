@@ -1,6 +1,10 @@
 name: Node.js CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+      - develop
 
 jobs:
   build:
@@ -9,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -17,8 +21,47 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - name: Cache Yarn ./node_modules
+      uses: actions/cache@v1
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
     - run: yarn install
     - run: yarn run build --if-present
-    - run: yran test
+    - run: yarn test
       env:
         CI: true
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: build-snapshot 
+        path: ./public
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    needs: build
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v1.0.0
+      with:
+        name: build-snapshot 
+        path: ./public
+    - name: Install deploy dependencies
+      run: sudo apt-get update && sudo apt-get install sshpass  -y 
+    - name: Deploy
+      run:  /usr/bin/rsync -vrltD --stats --human-readable --rsh="/usr/bin/sshpass -p $EGERMANO_PASS ssh -o StrictHostKeyChecking=no -l egermano" public/  egermano@ssh.egermano.com:~/egermano.com/me
+      if: github.ref == 'refs/heads/develop'
+      env: 
+        EGERMANO_PASS: ${{ secrets.egermano_pass }}

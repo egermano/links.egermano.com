@@ -1,18 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import './style.scss';
-import Helmet from './helmet';
-import Header from './header';
-import Midsection from './midsection';
-import Footer from './footer';
+import "./style.scss";
+import Helmet from "./helmet";
+import Header from "./header";
+import Footer from "./footer";
 
 const Layout = ({ children }) => (
-	<div>
-		<Helmet />
-		<Header />
-		<Midsection />
-		<Footer />
-	</div>
+  <div>
+    <Helmet />
+    <Header />
+	{ children }
+	<Footer />
+  </div>
 );
 
 export default Layout;
