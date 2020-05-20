@@ -1,10 +1,9 @@
-name: Node.js CI
+name: Test, Build and Deploy
 
 on:
   push:
     branches:
       - master
-      - develop
 
 jobs:
   build:
@@ -15,7 +14,7 @@ jobs:
       matrix:
         node-version: [12.x]
 
-    steps:
+     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -32,6 +31,7 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
+    - run: cp .env.example .env
     - run: yarn install
     - run: yarn run build --if-present
     - run: yarn test
@@ -61,7 +61,7 @@ jobs:
     - name: Install deploy dependencies
       run: sudo apt-get update && sudo apt-get install sshpass  -y 
     - name: Deploy
-      run:  /usr/bin/rsync -vrltD --stats --human-readable --rsh="/usr/bin/sshpass -p $EGERMANO_PASS ssh -o StrictHostKeyChecking=no -l egermano" public/  egermano@ssh.egermano.com:~/egermano.com/me
+      run:  /usr/bin/rsync -vrltD --stats --human-readable --rsh="/usr/bin/sshpass -p $EGERMANO_PASS ssh -o StrictHostKeyChecking=no -l egermano" public/  egermano@ssh.egermano.com:~/egermano.com/site
       if: github.ref == 'refs/heads/develop'
       env: 
         EGERMANO_PASS: ${{ secrets.egermano_pass }}
