@@ -35,7 +35,20 @@ export default function HTML(props) {
           })(window,document,'script','https://marketing.obrunogermano.com/index.php/mtc.js','mt');
       
           mt('send', 'pageview');
-          `
+          `,
+          }}
+        />
+        <script
+          key={"SentryCDN"}
+          src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js"
+          integrity="sha384-wF7Jc4ZlWVxe/L8Ji3hOIBeTgo/HwFuaeEfjGmS3EXAG7Y+7Kjjr91gJpJtr+PAT"
+          crossOrigin="anonymous"
+        />
+        <script
+          key={"SentryInit"}
+          id="SentryInit"
+          dangerouslySetInnerHTML={{
+            __html: `Sentry.init({ dsn: 'https://65e2163cb5de4d0cbd45ec944a9185de@o395640.ingest.sentry.io/5247973' });`,
           }}
         />
       </body>
@@ -49,5 +62,5 @@ HTML.propTypes = {
   bodyAttributes: PropTypes.object,
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
-  postBodyComponents: PropTypes.array
+  postBodyComponents: PropTypes.array,
 };
