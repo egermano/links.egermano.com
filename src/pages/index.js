@@ -30,6 +30,17 @@ class IndexPage extends React.Component {
             <h2 className="title has-text-centered">Meus links</h2>
 
             <div className="columns is-multiline is-centered">
+            <div className="column is-8 has-text-centered">
+                <a
+                  href="https://www.youtube.com/c/egermano/videos"
+                  className="button is-large is-primary is-fullwidth"
+                >
+                  <span className="icon is-medium">
+                    <FaYoutube />
+                  </span>
+                  <span>Último vídeo do Canal</span>
+                </a>
+              </div>
               <div className="column is-8 has-text-centered">
                 <a
                   href="http://to.egermano.com/lt-youtube"
