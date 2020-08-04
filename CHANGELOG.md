@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.0] - 202003-04
+## [0.3.0] - 2020-08-04
+
+- Adding last video link pointing to youtube videos
+
+## [0.1.0] - 2020-03-04
 
 ### Added
 
