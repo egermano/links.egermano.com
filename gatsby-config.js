@@ -1,3 +1,7 @@
+require("dotenv").config({
+	path: `.env${process.env.NODE_ENV?`.${process.env.NODE_ENV}`:''}`,
+})
+  
 module.exports = {
 	siteMetadata: {
 		title: 'O Bruno Germano - Meus Links',
