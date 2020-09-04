@@ -62,6 +62,6 @@ jobs:
       run: sudo apt-get update && sudo apt-get install sshpass  -y 
     - name: Deploy
       run:  /usr/bin/rsync -vrltD --stats --human-readable --rsh="/usr/bin/sshpass -p $EGERMANO_PASS ssh -o StrictHostKeyChecking=no -l egermano" public/  egermano@ssh.egermano.com:~/egermano.com/site
-      if: github.ref == 'refs/heads/develop'
+      if: github.ref == 'refs/heads/master'
       env: 
         EGERMANO_PASS: ${{ secrets.egermano_pass }}
