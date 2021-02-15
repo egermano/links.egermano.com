@@ -57,6 +57,7 @@ class IndexPage extends React.Component {
                             "media:thumbnail"
                           ][0]["$"].height
                         }
+                        alt={`Último vídeo: ${this.state.video.title[0]}`}
                       />
                     </figure>
                   </a>
