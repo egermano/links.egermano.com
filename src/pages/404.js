@@ -8,7 +8,7 @@ const NotFoundPage = () => (
       <h2 className="title">404 Não Encontrado</h2>
       <p>
         Você tentou acessar uma página que não existe{" "}
-        <Emoji emoji="😥">😥</Emoji>
+        <Emoji emoji="😥"><span role="img" aria-label="emoji triste">😥</span></Emoji>
       </p>
     </section>
   </Layout>
