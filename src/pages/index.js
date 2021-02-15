@@ -41,7 +41,7 @@ class IndexPage extends React.Component {
             <div className="columns is-multiline is-centered">
               {this.state.video ? (
                 <div className="column is-8 has-text-centered">
-                  <a href="https://www.youtube.com/c/egermano/videos">
+                  <a href={this.state.video.link[0].$.href}>
                     <figure className="image">
                       <img
                         src={
@@ -66,7 +66,7 @@ class IndexPage extends React.Component {
                     Último vídeo: {this.state.video.title[0]}
                   </h3>
                   <a
-                    href="https://www.youtube.com/c/egermano/videos"
+                    href={this.state.video.link[0].$.href}
                     className="button is-large is-danger is-fullwidth"
                   >
                     <span className="icon is-medium">
