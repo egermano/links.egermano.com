@@ -1,7 +1,7 @@
 {
 	"name": "links.egermano.com",
 	"description": "A Project bootstrapped using Gatsby + Bulma.",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"author": "Bruno Germano <bruno@egermano.com>",
 	"private": true,
 	"license": "UNLICENSED",

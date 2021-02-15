@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.0] - 2020-08-04
+## [0.4.1] - 2021-02-15
+
+- update packages
+- fix github actions
+
+## [0.4.0] - 2021-02-15
 
 - update axios version
 - adding sentry tracker
