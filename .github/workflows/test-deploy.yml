@@ -38,8 +38,9 @@ jobs:
         yarn run build --if-present
         yarn test
       env:
-        NODE_ENV: production
         CI: true
+        NODE_ENV: production
+        GATSBY_YT_HELPER_URL: "https://service-youtube-helpers-prod.obglab.com/v1/last-video"
     - name: Deploy
       run: |
         sudo apt-get update && sudo apt-get install sshpass  -y 
