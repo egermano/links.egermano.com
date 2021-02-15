@@ -32,8 +32,12 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
-    - run: yarn install
-    - run: yarn run build --if-present
-    - run: yarn test
+    - name: Yarn instal, test and build
+      run: |
+        yarn install
+        yarn run build
+        yarn test
       env:
         CI: true
+        NODE_ENV: production
+        GATSBY_YT_HELPER_URL: "https://service-youtube-helpers-prod.obglab.com/v1/last-video"
