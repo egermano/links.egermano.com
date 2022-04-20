@@ -11,6 +11,7 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <meta name="facebook-domain-verification" content="yynd8zqqadpihoaz5h6lc5ws3isu5l" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
@@ -49,6 +50,23 @@ export default function HTML(props) {
           id="SentryInit"
           dangerouslySetInnerHTML={{
             __html: `Sentry.init({ dsn: 'https://65e2163cb5de4d0cbd45ec944a9185de@o395640.ingest.sentry.io/5247973' });`,
+          }}
+        />
+        <script
+          key={'fbpixel'}
+          id="fbpixel"
+          dangerouslySetInnerHTML={{
+            __html: `
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;
+            n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1008583233416020');
+            fbq('track', 'PageView');
+          `,
           }}
         />
       </body>
